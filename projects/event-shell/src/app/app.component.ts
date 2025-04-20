@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate } from './shared/utils';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,20 +11,26 @@ import { formatDate } from './shared/utils';
 export class AppComponent implements OnInit {
   title = 'event-shell';
   isLoggedIn: boolean = false;
+  isLoginPage: boolean = false;
 
-  async ngOnInit() {
-    await this.fakeInitDelay(2000);
+  constructor(private router: Router) {}
 
-    const splash = document.getElementById('splash-screen');
-    if (splash) {
-      // this.isLoggedIn = true;
-      if(sessionStorage.getItem('EM-User')){
-        this.isLoggedIn = true;
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isLoginPage = this.router.url.includes('/login');
+        const user = sessionStorage.getItem('EM-User');
+        this.isLoggedIn = !!user && !this.isLoginPage;
+
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+          splash.style.display = 'none';
+        }
       }
-      splash.style.display = 'none';
-    }
+    });
   }
 
+  // await this.fakeInitDelay(1500);
   private fakeInitDelay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }

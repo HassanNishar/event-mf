@@ -28,7 +28,8 @@
 						],
 						"styles": [
 							"projects/event-shell/src/styles.css",
-							"projects/event-remote1/src/styles.css"
+							"projects/event-remote1/src/styles.css",
+							"projects/event-remote2/src/styles.css"
 						],
 						"scripts": [],
 						"main": "projects/event-shell/src/main.ts",
