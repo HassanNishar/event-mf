@@ -1,7 +1,352 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-  }
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"event-shell": {
+			"projectType": "application",
+			"schematics": {},
+			"root": "projects/event-shell",
+			"sourceRoot": "projects/event-shell/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/event-shell",
+						"index": "projects/event-shell/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/event-shell/tsconfig.app.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/event-shell/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/event-shell/src/styles.css",
+							"projects/event-remote1/src/styles.css"
+						],
+						"scripts": [],
+						"main": "projects/event-shell/src/main.ts",
+						"extraWebpackConfig": "projects/event-shell/webpack.config.js",
+						"commonChunk": false,
+						"allowedCommonJsDependencies": [
+							"@angular-architects/module-federation"
+						]
+					},
+					"configurations": {
+						"production": {
+							"fileReplacements": [
+								{
+									"replace": "projects/event-shell/src/environments/environment.ts",
+									"with": "projects/event-shell/src/environments/environment.prod.ts"
+								}
+							],
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/event-shell/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "event-shell:build:production",
+							"extraWebpackConfig": "projects/event-shell/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "event-shell:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 5220,
+						"publicHost": "http://localhost:5220",
+						"extraWebpackConfig": "projects/event-shell/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/event-shell/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/event-shell/public"
+							}
+						],
+						"styles": [
+							"projects/event-shell/src/styles.css"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"event-remote1": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"standalone": false
+				},
+				"@schematics/angular:directive": {
+					"standalone": false
+				},
+				"@schematics/angular:pipe": {
+					"standalone": false
+				}
+			},
+			"root": "projects/event-remote1",
+			"sourceRoot": "projects/event-remote1/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/event-remote1",
+						"index": "projects/event-remote1/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/event-remote1/tsconfig.app.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/event-remote1/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/event-remote1/src/styles.css"
+						],
+						"scripts": [],
+						"main": "projects/event-remote1/src/main.ts",
+						"extraWebpackConfig": "projects/event-remote1/webpack.config.js",
+						"commonChunk": false,
+						"allowedCommonJsDependencies": [
+							"@angular-architects/module-federation"
+						]
+					},
+					"configurations": {
+						"production": {
+							"fileReplacements": [
+								{
+									"replace": "projects/event-remote1/src/environments/environment.ts",
+									"with": "projects/event-remote1/src/environments/environment.prod.ts"
+								}
+							],
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/event-remote1/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "event-remote1:build:production",
+							"extraWebpackConfig": "projects/event-remote1/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "event-remote1:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 5221,
+						"publicHost": "http://localhost:5221",
+						"extraWebpackConfig": "projects/event-remote1/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/event-remote1/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/event-remote1/public"
+							}
+						],
+						"styles": [
+							"projects/event-remote1/src/styles.css"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"event-remote2": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"standalone": false
+				},
+				"@schematics/angular:directive": {
+					"standalone": false
+				},
+				"@schematics/angular:pipe": {
+					"standalone": false
+				}
+			},
+			"root": "projects/event-remote2",
+			"sourceRoot": "projects/event-remote2/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/event-remote2",
+						"index": "projects/event-remote2/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/event-remote2/tsconfig.app.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/event-remote2/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/event-remote2/src/styles.css"
+						],
+						"scripts": [],
+						"main": "projects/event-remote2/src/main.ts",
+						"extraWebpackConfig": "projects/event-remote2/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"fileReplacements": [
+								{
+									"replace": "projects/event-remote2/src/environments/environment.ts",
+									"with": "projects/event-remote2/src/environments/environment.prod.ts"
+								}
+							],
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/event-remote2/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "event-remote2:build:production",
+							"extraWebpackConfig": "projects/event-remote2/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "event-remote2:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 5222,
+						"publicHost": "http://localhost:5222",
+						"extraWebpackConfig": "projects/event-remote2/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/event-remote2/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/event-remote2/public"
+							}
+						],
+						"styles": [
+							"projects/event-remote2/src/styles.css"
+						],
+						"scripts": []
+					}
+				}
+			}
+		}
+	},
+	"cli": {
+		"analytics": "7ca10830-e087-4e5e-a5f4-0b7e7d8aee70"
+	}
 }
