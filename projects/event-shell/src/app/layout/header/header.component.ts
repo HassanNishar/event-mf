@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  standalone: false,
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -16,7 +16,7 @@ export class HeaderComponent {
   logout() {
     localStorage.removeItem('EM-User-GG');
     sessionStorage.removeItem("EM-User");
-    this._router.navigate(['auth//login']);
+    this._router.navigate(['event-remote1/login']);
   }
 
   Profile() {

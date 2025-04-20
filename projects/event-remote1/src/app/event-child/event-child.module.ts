@@ -3,15 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { EventChildRoutingModule } from './event-child-routing.module';
 import { EventChildComponent } from './event-child.component';
-import { LoginComponent } from './account/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/account/login/login.component';
 
 
 @NgModule({
   declarations: [
     EventChildComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

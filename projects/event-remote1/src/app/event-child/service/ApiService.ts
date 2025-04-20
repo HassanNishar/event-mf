@@ -39,7 +39,7 @@ export class ApiService {
             map(data => {
                 const encryptedData = userEncrypt(data);
                 sessionStorage.setItem('EM-User', encryptedData);
-                this._router.navigate(['/auth//home']);
+                this._router.navigate(['/event-remote1/home']);
                 return data;
             }),
             catchError(error => {
@@ -60,7 +60,7 @@ export class ApiService {
             map(data => {
                 const newdata = userEncrypt(data);
                 sessionStorage.setItem("EM-User", newdata);
-                this._router.navigate(['/auth//home']);
+                this._router.navigate(['/event-remote1/home']);
                 return data;
             }),
             catchError(error => {
@@ -108,9 +108,9 @@ export class ApiService {
         );
     }
 
-    logout() {
-        localStorage.removeItem('EM-User-GG');
-        sessionStorage.removeItem("EM-User");
-        this._router.navigate(['/auth/login']);
-    }
+    // logout() {
+    //     localStorage.removeItem('EM-User-GG');
+    //     sessionStorage.removeItem("EM-User");
+    //     this._router.navigate(['/auth/login']);
+    // }
 }

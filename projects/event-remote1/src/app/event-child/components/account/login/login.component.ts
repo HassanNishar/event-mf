@@ -1,8 +1,8 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../../environments/environment';
-import { ApiService } from '../../service/ApiService';
+import { environment } from '../../../../../environments/environment';
+import { ApiService } from '../../../service/ApiService';
 declare const google: any;
 
 @Component({
@@ -28,13 +28,12 @@ export class LoginComponent implements OnInit {
 
   LoadGooglesignin() {
     if (isPlatformBrowser(this.platformId)) {
-      // Check if a token exists in localStorage (auto-login)
-      const authToken = localStorage.getItem('EM-User-GG');
-      if (authToken) {
-        this.autoLogin(authToken); // If token exists, auto-login
-      } else {
-        this.loadGoogleSignIn(); // Otherwise, load Google Sign-In
-      }
+      // const authToken = localStorage.getItem('EM-User-GG');
+      // if (authToken) {
+      //   this.autoLogin(authToken);
+      // } else {
+      this.loadGoogleSignIn();
+      // }
     }
   }
 
