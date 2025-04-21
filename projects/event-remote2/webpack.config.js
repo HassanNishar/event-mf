@@ -20,15 +20,4 @@ module.exports = withModuleFederationPlugin({
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
   },
 
-  // Add this to support Tailwind via PostCSS
-  webpackConfigTransform: (config) => {
-    config.module.rules.push({
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader', 'postcss-loader'],
-      include: path.resolve(__dirname, 'src'),
-    });
-
-    return config;
-  },
-
 });

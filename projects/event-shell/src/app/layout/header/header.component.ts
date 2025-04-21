@@ -22,4 +22,8 @@ export class HeaderComponent {
   Profile() {
     this._router.navigate(['profile']);
   }
+
+  Navigate(url: string){
+    this._router.navigate([url]);
+  }
 }
