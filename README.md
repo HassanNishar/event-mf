@@ -1,73 +1,68 @@
 1. Project Structure
 
 event-mf/
-|
-|__projects/
-|   |_event-shell/
-|       |_src/
-|           |_app/
-|               |_event-child
-|                   |_event-child-routing.module.ts
-|                   |_event-child.component.css
-|                   |_event-child.component.html
-|                   |_event-child.component.spec.ts
-|                   |_event-child.component.ts
-|                   |_event-child.module.ts
-|               |_app.routing.module.ts
-|               |_app.component.css
-|               |_app.component.html
-|               |_app.component.spec.ts
-|               |_app.component.ts
-|               |_app.module.server.ts
-|               |__app.module.ts
-|               |__app.routes.server.ts
-|           |_environments/
-|               |_environment.prod.ts
-|               |_environment.ts
-|           |_bootstrap.ts
-|           |_index.html
-|           |_main.server.ts
-|           |_main.ts
-|           |_server.ts
-|           |_styles.css
-|       |_tsconfig.app.json
-|       |_tsconfig.spec.json
-|       |_webpack.config.js
-|       |_webpack.prod.config.js
-|   |_event-remote1/
-|       |_public/
-|           |_favicon.ico
-|       |_src/
-|           |_app/
-|               |_app.routing.module.ts
-|               |_app.component.css
-|               |_app.component.html
-|               |_app.component.spec.ts
-|               |_app.component.ts
-|               |_app.module.server.ts
-|               |__app.module.ts
-|               |__app.routes.server.ts
-|           |_environments/
-|               |_environment.prod.ts
-|               |_environment.ts
-|           |_bootstrap.ts
-|           |_index.html
-|           |_main.server.ts
-|           |_main.ts
-|           |_server.ts
-|           |_styles.css
-|       |_tsconfig.app.json
-|       |_tsconfig.spec.json
-|       |_webpack.config.js
-|       |_webpack.prod.config.js
-|   |_.editorconfig
-|   |_.gitignore
-|   |_angular.json
-|   |_package-lock.json
-|   |_package.json
-|   |_README.md
-|   |_tsconfig.json
-
+│
+├── node_modules/
+├── projects/
+│   ├── event-shell/              # Host application
+│   │   ├── src/
+│   │   │   ├── app/
+│   │   │   │   ├── event-child/           # Lazy-loaded child module
+│   │   │   │   │   ├── event-child-routing.module.ts
+│   │   │   │   │   ├── event-child.component.ts/html/css/spec.ts
+│   │   │   │   │   └── event-child.module.ts
+│   │   │   │   ├── app.component.ts/html/css/spec.ts
+│   │   │   │   ├── app.module.ts
+│   │   │   │   ├── app.module.server.ts
+│   │   │   │   ├── app.routing.module.ts
+│   │   │   │   └── app.routes.server.ts
+│   │   │   ├── environments/
+│   │   │   │   ├── environment.ts
+│   │   │   │   └── environment.prod.ts
+│   │   │   ├── assets/
+│   │   │   ├── index.html
+│   │   │   ├── main.ts
+│   │   │   ├── main.server.ts
+│   │   │   ├── bootstrap.ts
+│   │   │   ├── server.ts
+│   │   │   └── styles.css
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.spec.json
+│   │   ├── webpack.config.js
+│   │   └── webpack.prod.config.js
+│   │
+│   └── event-remote1/            # Remote application
+│       ├── src/
+│       │   ├── app/
+│       │   │   ├── app.component.ts/html/css/spec.ts
+│       │   │   ├── app.module.ts
+│       │   │   ├── app.module.server.ts
+│       │   │   ├── app.routing.module.ts
+│       │   │   └── app.routes.server.ts
+│       │   ├── environments/
+│       │   │   ├── environment.ts
+│       │   │   └── environment.prod.ts
+│       │   ├── assets/
+│       │   ├── index.html
+│       │   ├── main.ts
+│       │   ├── main.server.ts
+│       │   ├── bootstrap.ts
+│       │   ├── server.ts
+│       │   └── styles.css
+│       ├── public/               # Static files like favicon
+│       │   └── favicon.ico
+│       ├── tsconfig.app.json
+│       ├── tsconfig.spec.json
+│       ├── webpack.config.js
+│       └── webpack.prod.config.js
+│
+├── .editorconfig
+├── .gitignore
+├── angular.json                 # Angular workspace config
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── README.md
 
 2. cmd used to create this app
 
@@ -249,3 +244,22 @@ name: 'event-remote2',
 const Devinfo = await import('event_shell/DevInfo');
     this.Info = Devinfo.DeveloperInfo();
     ```
+
+## Change the scripts in angular.json to run with Environment
+ "start:shell": "cross-env NODE_ENV=development ng serve event-shell --configuration development"
+ "start:remote1": "cross-env NODE_ENV=development ng serve event-remote1 --configuration development"
+
+## Change the scripts in angular.json to build with Environment
+ "build:shell": "cross-env NODE_ENV=production ng build event-shell --configuration production"
+ "build:remote1": "cross-env NODE_ENV=production ng build event-remote1 --configuration production"
+
+## After Change Script Run this comment in root to run the Application
+  ## To start shell
+  ```bash
+  npm run start:shell
+  ```
+
+    ## To start remote
+  ```bash
+  npm run start:remote1
+  ```
