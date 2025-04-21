@@ -9,9 +9,69 @@ This project includes:
 
 ## 🗂️ Project Structure
 
-event-mf/ ├── node_modules/ ├── projects/ │ ├── event-shell/ │ │ ├── src/ │ │ │ ├── app/ │ │ │ │ ├── event-child/ │ │ │ │ │ ├── event-child-routing.module.ts │ │ │ │ │ ├── event-child.component.ts/html/css/spec.ts │ │ │ │ │ └── event-child.module.ts │ │ │ │ ├── shared/ │ │ │ │ │ └── ProjectInfo.ts │ │ │ │ ├── app.component.ts/html/css/spec.ts │ │ │ │ ├── app.module.ts │ │ │ │ ├── app.routing.module.ts │ │ │ │ └── app.routes.server.ts │ │ │ ├── environments/ │ │ │ ├── assets/ │ │ │ ├── main.ts │ │ │ ├── bootstrap.ts │ │ │ ├── styles.css │ │ │ └── index.html │ │ ├── webpack.config.js │ └── event-remote1/ │ └── event-remote2/ ├── angular.json ├── package.json ├── tsconfig.json └── README.md
-
-
+event-mf/
+│
+├── node_modules/
+├── projects/
+│   ├── event-shell/              # Host application
+│   │   ├── src/
+│   │   │   ├── app/
+│   │   │   │   ├── event-child/           # Lazy-loaded child module
+│   │   │   │   │   ├── event-child-routing.module.ts
+│   │   │   │   │   ├── event-child.component.ts/html/css/spec.ts
+│   │   │   │   │   └── event-child.module.ts
+│   │   │   │   ├── app.component.ts/html/css/spec.ts
+│   │   │   │   ├── app.module.ts
+│   │   │   │   ├── app.module.server.ts
+│   │   │   │   ├── app.routing.module.ts
+│   │   │   │   └── app.routes.server.ts
+│   │   │   ├── environments/
+│   │   │   │   ├── environment.ts
+│   │   │   │   └── environment.prod.ts
+│   │   │   ├── assets/
+│   │   │   ├── index.html
+│   │   │   ├── main.ts
+│   │   │   ├── main.server.ts
+│   │   │   ├── bootstrap.ts
+│   │   │   ├── server.ts
+│   │   │   └── styles.css
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.spec.json
+│   │   ├── webpack.config.js
+│   │   └── webpack.prod.config.js
+│   │
+│   └── event-remote1/            # Remote application
+│       ├── src/
+│       │   ├── app/
+│       │   │   ├── app.component.ts/html/css/spec.ts
+│       │   │   ├── app.module.ts
+│       │   │   ├── app.module.server.ts
+│       │   │   ├── app.routing.module.ts
+│       │   │   └── app.routes.server.ts
+│       │   ├── environments/
+│       │   │   ├── environment.ts
+│       │   │   └── environment.prod.ts
+│       │   ├── assets/
+│       │   ├── index.html
+│       │   ├── main.ts
+│       │   ├── main.server.ts
+│       │   ├── bootstrap.ts
+│       │   ├── server.ts
+│       │   └── styles.css
+│       ├── public/               # Static files like favicon
+│       │   └── favicon.ico
+│       ├── tsconfig.app.json
+│       ├── tsconfig.spec.json
+│       ├── webpack.config.js
+│       └── webpack.prod.config.js
+│
+├── .editorconfig
+├── .gitignore
+├── angular.json                 # Angular workspace config
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── README.md
 
 
 ## 🛠️ Commands Used to Create the Setup
