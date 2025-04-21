@@ -12,7 +12,7 @@ This project includes:
 event-mf/ ├── node_modules/ ├── projects/ │ ├── event-shell/ │ │ ├── src/ │ │ │ ├── app/ │ │ │ │ ├── event-child/ │ │ │ │ │ ├── event-child-routing.module.ts │ │ │ │ │ ├── event-child.component.ts/html/css/spec.ts │ │ │ │ │ └── event-child.module.ts │ │ │ │ ├── shared/ │ │ │ │ │ └── ProjectInfo.ts │ │ │ │ ├── app.component.ts/html/css/spec.ts │ │ │ │ ├── app.module.ts │ │ │ │ ├── app.routing.module.ts │ │ │ │ └── app.routes.server.ts │ │ │ ├── environments/ │ │ │ ├── assets/ │ │ │ ├── main.ts │ │ │ ├── bootstrap.ts │ │ │ ├── styles.css │ │ │ └── index.html │ │ ├── webpack.config.js │ └── event-remote1/ │ └── event-remote2/ ├── angular.json ├── package.json ├── tsconfig.json └── README.md
 
 
----
+
 
 ## 🛠️ Commands Used to Create the Setup
 
