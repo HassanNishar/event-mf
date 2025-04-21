@@ -11,7 +11,7 @@ module.exports = withModuleFederationPlugin({
   exposes: {
     './Utils': './projects/event-shell/src/app/shared/utils.ts',
     './DevInfo': './projects/event-shell/src/app/shared/ProjectInfo.ts',
-    // './StateService': './projects/event-shell/src/app/shared/StateService.ts',
+    './APIService': './projects/event-shell/src/app/shared/api.service.ts',
   },
 
   shared: {

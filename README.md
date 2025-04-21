@@ -73,7 +73,7 @@ event-mf/
 
 npx @angular/cli new event-mf --create-application=false
 cd event-mf
-ng generate application event-shell --routing --style=css
+ng generate application event-shell --routing --style=css --no-standalone
 ng generate application event-remote1 --routing --style=css --no-standalone
 npm install @angular-architects/module-federation --save-dev
 ng add @angular-architects/module-federation --project event-shell --type host

@@ -15,5 +15,6 @@
     "src/**/*.d.ts",
     "src/app/shared/utils.ts",
     "src/app/shared/ProjectInfo.ts",
+    "src/app/shared/api.service.ts",
   ]
 }
